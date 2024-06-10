@@ -446,6 +446,7 @@ Bluetooth Audio:
     - tests/bsim/bluetooth/audio_samples/
     - tests/bluetooth/shell/audio.conf
     - tests/bluetooth/tester/overlay-le-audio.conf
+    - tests/bluetooth/tester/src/audio/
     - doc/connectivity/bluetooth/api/audio/
     - samples/bluetooth/bap*/
     - samples/bluetooth/hap*/
@@ -3239,8 +3240,13 @@ Raspberry Pi Pico Platforms:
   labels:
     - "platform: Raspberry Pi Pico"
 
-SiLabs Platforms:
-  status: odd fixes
+Silabs Platforms:
+  status: maintained
+  maintainers:
+    - jhedberg
+  collaborators:
+    - jerome-pouiller
+    - asmellby
   files:
     - soc/silabs/
     - boards/silabs/
@@ -3248,7 +3254,7 @@ SiLabs Platforms:
     - dts/bindings/*/silabs*
     - drivers/*/*_gecko*
   labels:
-    - "platform: SiLabs"
+    - "platform: Silabs"
 
 Intel Platforms (X86):
   status: maintained
@@ -4444,15 +4450,19 @@ West:
     - "platform: Raspberry Pi Pico"
 
 "West project: hal_silabs":
-  status: odd fixes
+  status: maintained
+  maintainers:
+    - jhedberg
   collaborators:
+    - jerome-pouiller
+    - asmellby
     - sateeshkotapati
     - yonsch
     - mnkp
   files:
     - modules/Kconfig.silabs
   labels:
-    - "platform: SiLabs"
+    - "platform: Silabs"
 
 "West project: hal_st":
   status: maintained
