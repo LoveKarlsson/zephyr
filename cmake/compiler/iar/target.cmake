@@ -76,8 +76,19 @@ if("${IAR_TOOLCHAIN_VARIANT}" STREQUAL "iccarm")
   list(APPEND IAR_COMMON_FLAGS
     --endian=little
     --cpu=${ICCARM_CPU}
-    -DRTT_USE_ASM=0       #WA for VAAK-232
-    --diag_suppress=Ta184  # Using zero sized arrays except for as last member of a struct is discouraged and dereferencing elements in such an array has undefined behavior
+    -DRTT_USE_ASM=0        # WA for VAAK-232
+    --diag_suppress=Ta184  # Using zero sized arrays except for as last
+                           # member of a struct is discouraged and
+                           # dereferencing elements in such an array has
+                           # undefined behavior
+  )
+endif()
+
+# If the warning level is default, we enable --vla for now, until
+# the uses of it has been removed
+if(NOT W MATCHES "1" AND NOT W MATCHES "2" AND NOT W MATCHES "3")
+  list(APPEND IAR_COMMON_FLAGS
+    --vla
   )
 endif()
 
@@ -116,9 +127,7 @@ if("${IAR_TOOLCHAIN_VARIANT}" STREQUAL "iccarm")
       list(APPEND IAR_ASM_FLAGS -mfpu=${GCC_M_FPU})
     endif()
   endif()
-endif()
 
-if("${IAR_TOOLCHAIN_VARIANT}" STREQUAL "iccarm")
   if(CONFIG_IAR_LIBC)
     # Zephyr requires AEABI portability to ensure correct functioning of the C
     # library, for example error numbers, errno.h.
